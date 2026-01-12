@@ -12,75 +12,96 @@ const projects: Project[] = [
   {
     name: "Terazan",
     description: "Bienes raíces",
-    href: "#",
-    image: "/terazan.jpg",
+    href: "https://www.facebook.com/profile.php?id=61559578655513",
+    image: "/terazan.png",
   },
   {
     name: "Luz de Luz",
     description: "Estudio de diseño y arte católico",
-    href: "#",
-    image: "/luz-de-luz.jpg",
+    href: "https://www.instagram.com/luzdeluz.studio/",
+    image: "/luzdeluz.png",
   },
   {
     name: "Cyclica",
     description: "App para planificación familiar natural",
-    href: "#",
-    image: "/cyclica.jpg",
+    href: "https://apps.apple.com/us/app/cyclica/id6752114124",
+    image: "/cyclica.png",
   },
   {
     name: "Himnos",
     description: "Explorar belleza de los himnos",
-    href: "#",
-    image: "/himnos.jpg",
+    href: "https://himnos.aeterna.network/",
+    image: "/himnos.png",
   },
 ];
 
 export default function Home() {
+  // Create array with projects and empty placeholders
+  const gridItems = [
+    ...projects,
+    ...Array(2).fill(null), // 2 empty placeholders
+  ];
+
   return (
-    <main className="min-h-screen bg-white">
-      <div className="container mx-auto px-4 py-16 max-w-6xl">
+    <main className="min-h-screen bg-white flex flex-col">
+      <div className="container mx-auto px-4 pt-12 max-w-5xl">
         {/* Header */}
-        <header className="text-center mb-16">
-          <h1 className="text-5xl font-light mb-4 text-gray-900">
+        <header className="text-center mb-12">
+          <h1 className="text-4xl font-light mb-3 text-gray-900">
             Aeterna
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Proyectos de la familia de Andrés y Mari
+          <p className="text-base text-gray-600 max-w-xl mx-auto">
+            Proyectos de una familia católica que busca glorificar a Dios con su trabajo.
           </p>
         </header>
+      </div>
 
-        {/* Grid of Projects */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project) => (
-            <Link
-              key={project.name}
-              href={project.href}
-              className="group block"
-            >
-              <div className="h-full bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 overflow-hidden">
-                {/* Image */}
-                <div className="relative w-full h-64 bg-gray-100">
-                  <Image
-                    src={project.image}
-                    alt={project.name}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    unoptimized
-                  />
+      {/* Grid of Projects - Centered vertically */}
+      <div className="flex-1 flex items-center justify-center">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {gridItems.map((project, index) => {
+            if (!project) {
+              // Empty placeholder
+              return (
+                <div key={`placeholder-${index}`} className="h-full bg-transparent">
+                  {/* Empty space */}
                 </div>
+              );
+            }
 
-                {/* Content */}
-                <div className="p-6">
-                  <h2 className="text-2xl font-light mb-2 text-gray-900">
-                    {project.name}
-                  </h2>
-                  <p className="text-gray-600">
-                    {project.description}
-                  </p>
+            return (
+              <Link
+                key={project.name}
+                href={project.href}
+                className="group block"
+              >
+                <div className="h-full bg-white border border-gray-200 hover:border-gray-300 transition-all duration-300 overflow-hidden">
+                  {/* Image */}
+                  <div className="relative w-full h-48 bg-gray-100">
+                    <Image
+                      src={project.image}
+                      alt={project.name}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      unoptimized
+                    />
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5">
+                    <h2 className="text-xl font-light mb-2 text-gray-900">
+                      {project.name}
+                    </h2>
+                    <p className="text-gray-600 text-sm">
+                      {project.description}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </Link>
-          ))}
+              </Link>
+            );
+          })}
+          </div>
         </div>
       </div>
     </main>
