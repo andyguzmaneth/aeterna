@@ -33,13 +33,19 @@ const projects: Project[] = [
     href: "https://himnos.aeterna.network/",
     image: "/himnos.png",
   },
+  {
+    name: "Relics of Legend",
+    description: "Reliquias católicas famosas: historia, leyenda y dónde encontrarlas",
+    href: "https://relics-of-legend.vercel.app/",
+    image: "/relics.png",
+  },
 ];
 
 export default function Home() {
   // Create array with projects and empty placeholders
   const gridItems = [
     ...projects,
-    ...Array(2).fill(null), // 2 empty placeholders
+    ...Array(1).fill(null), // 1 empty placeholder → clean 2×3 grid
   ];
 
   return (
