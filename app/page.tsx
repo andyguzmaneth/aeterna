@@ -12,13 +12,13 @@ const projects: Project[] = [
   {
     name: "Terazan",
     description: "Bienes raíces",
-    href: "https://www.facebook.com/profile.php?id=61559578655513",
+    href: "https://terazan.com/",
     image: "/terazan.png",
   },
   {
     name: "Luz de Luz",
     description: "Estudio de diseño y arte católico",
-    href: "https://www.instagram.com/luzdeluz.studio/",
+    href: "https://www.luzdeluz.studio/",
     image: "/luzdeluz.png",
   },
   {
